@@ -1,0 +1,182 @@
+//====================================================================================================
+.header {
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+	transition: all 0.3s ease 0s;
+	@include adaptiveValue("padding-top",60, 10);
+	@include adaptiveValue("padding-bottom",60 ,10 );
+	&._header-scroll {
+		padding-top: rem(20);
+		padding-bottom: rem(20);
+		background-color: rgba(38, 50, 56, 0.9);
+	}
+	// .header__container-big
+	&__container-big {
+		display: grid;
+		grid-template-columns: rem(300) 1fr rem(300);
+		align-items: center;
+		@media (max-width: em(1080)){
+			grid-template-columns: auto 1fr auto;
+		}
+	}
+	// .header__logo
+	&__logo {
+		position: relative;
+		z-index: 5;
+		@include adaptiveValue("width", 130, 100, 0, 1620, 768);
+		img {
+			width: 100%;
+		}
+	}
+	// .header__menu
+	&__menu {
+	}
+	// .header__actions
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: rem(16);
+		position: relative;
+		z-index: 5;
+	}
+	// .header__button
+	&__button {
+	}
+}
+.menu {
+	padding: rem(0) rem(10);
+	// .menu__icon
+	&__icon {
+	}
+	// .menu__body
+	&__body {
+		@media (max-width:$mobile){
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			top: 0;
+			left: -100%;
+			transition: all 0.3s ease 0s;
+			overflow: auto;
+			background-color: #263238;
+			gap: rem(30);
+			@include adaptiveValue("padding-top",140 , 100, 0, 768,320);
+			padding-left: rem(15);
+			padding-right: rem(15);
+			padding-bottom: rem(30);
+			&::before{
+				content:'';
+				position: fixed;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				@include adaptiveValue("height", 105, 72,0, 768,320);
+				background-color: #232e34;
+				z-index: 2;
+			}
+		}
+		.menu-open & {
+			left: 0;
+			&::before{
+				left: 0;
+				
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		row-gap: rem(10);
+		@include adaptiveValue("column-gap", 38, 20);
+		@media (max-width:$mobile){
+			flex-direction: column;
+			text-align: center;
+			row-gap: rem(30);
+		}
+	}
+	// .menu__item
+
+	&__item {
+	}
+
+	// .menu__link
+
+	&__link {
+		
+		@media (max-width:$mobile){
+			font-size: rem(40);
+		}
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover){
+			&:hover{
+				color: $greenColor;
+			}
+		}
+	}
+}
+.theme {
+	padding-bottom: rem(4);
+	// display: flex;
+	// align-items: center;
+	width: rem(16);
+	height: rem(16);
+}
+//====================================================================================================
+//Burger
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #fff;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+//========================================================================================================================================================

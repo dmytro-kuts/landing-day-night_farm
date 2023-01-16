@@ -1,0 +1,112 @@
+// Заголовки, общие БЄМ блоки и проче...
+.page {
+    // .page__main
+    &__main {
+    }
+    // .page__partners
+    &__partners {
+    }
+    // .page__how
+    &__how {
+    }
+    // .page__pathway
+    &__pathway {
+    }
+    // .page__why
+    &__why {
+    }
+    // .page__reviews
+    &__reviews {
+    }
+      // .page__download
+    &__download {
+    }    
+}
+//========================================================================================================================================================
+.title {
+    font-weight: 600;
+    line-height: math.div(65 , 70);
+    @include adaptiveValue("font-size",70 ,40 );
+    &_s64 {
+        @include adaptiveValue("font-size",64 ,40 );
+    }
+    &_s56 {
+        @include adaptiveValue("font-size",56 ,35 );
+    }
+    span {
+        color: $greenColor;
+    }
+}
+//========================================================================================================================================================
+.text {
+    line-height: 180%;
+}
+//========================================================================================================================================================
+.form {
+    // .form__input
+    &__input {
+        &._form-focus {
+            border-radius: rem(10);
+            border: 1px solid $greenColor;
+        }
+    }
+    // .form__button
+    &__button {
+    }
+}
+//========================================================================================================================================================
+.image-block {
+    align-self: start;
+    display: flex;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: rem(20);
+    @include adaptiveValue("padding-top", 166, 30);
+    @include adaptiveValue("padding-bottom", 166, 30);
+    @include adaptiveValue("padding-left", 46, 30);
+    @include adaptiveValue("padding-right", 46, 30);
+    position: relative;
+	// .image-block__circle
+	&__circle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include adaptiveValue("width", 585, 350);
+        @include adaptiveValue("height", 585, 350);
+        &::before{
+            content:'';
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+		// .image-block__circle_1
+		&_1 {
+            &::before{
+                transform: translate(calc(50% - rem(18)), -20%);
+            }
+		}
+		// .image-block__circle_2
+		&_2 {
+            &::before{
+                transform: translate(calc(50% - rem(18)), -6%);
+                
+            }
+		}
+	}
+    // .image-block__item
+    &__item{
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        flex: 1 1 100%;
+        img {
+            max-width: 100%;
+            border-radius: rem(22);
+        }
+    }
+}
+//========================================================================================================================================================
