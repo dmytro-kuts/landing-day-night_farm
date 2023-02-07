@@ -4,7 +4,7 @@
 	"license": "",
 	"type": "module",
 	"private": true,
-	"homepage": "https://dmytro24.github.io/landing-page-farm/",
+	"homepage": "https://dmytro-kuts.github.io/landing-day-night_farm/",
 	"scripts": {
 		"start": "npm i --legacy-peer-deps",
 		"dev": "gulp && webpack serve --progress -c config/webpack.dev.js",
