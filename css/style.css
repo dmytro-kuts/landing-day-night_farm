@@ -87,6 +87,10 @@ h6 {
   font-size: inherit;
 }
 
+body {
+  opacity: 1;
+}
+
 .lock body {
   overflow: hidden;
   -ms-touch-action: none;
