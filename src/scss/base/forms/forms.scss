@@ -8,6 +8,11 @@
 	padding: rem(6);
 	gap: rem(5);
 	position: relative;
+	.light & {
+		color: $mainColor;
+		color: $greyColor;
+		background-color: #f2f8f2;
+	}
 	@media (max-width: em(430)){
 		flex-direction: column;
 	}
@@ -23,6 +28,9 @@
 		padding: rem(0) rem(20);
 		font-weight: 500;
 		color: #263238;
+		.light & {
+			background-color: #f2f8f2;
+		}
 		&::placeholder {
 			color: #263238;
 		}

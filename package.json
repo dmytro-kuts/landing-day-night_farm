@@ -1,22 +1,18 @@
 {
-	"name": "fls-start",
 	"version": "3.0.0",
 	"description": "Start template with Gulp and Webpack",
-	"author": "FLS",
-	"private": true,
 	"license": "",
-	"homepage": "https://dmytro24.github.io/landing-page-farm/",
 	"type": "module",
+	"private": true,
+	"homepage": "https://dmytro24.github.io/landing-page-farm/",
 	"scripts": {
 		"start": "npm i --legacy-peer-deps",
 		"dev": "gulp && webpack serve --progress -c config/webpack.dev.js",
 		"build": "gulp build --build",
 		"sprite": "gulp sprite",
 		"fonts": "gulp fonts --rewrite",
-		"deploy": "gulp deployFTP --build",
-		"deployGh": "gulp gh-pages -d --build",
-		"predeployGh": "gulp build --build",
-		"zip": "gulp deployZIP --build",
+		"deploy": "gh-pages -d dist",
+		"predeploy": "npm run build",
 		"devbuild": "gulp build --build --nowebp",
 		"tmp": "gulp -f gulpfile.tmp.js",
 		"bem": "fls-bemtree-from-html"
@@ -74,7 +70,7 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
-		"gh-pages": "^4.0.0",
+		"gh-pages": "^5.0.0",
 		"gulp-cheerio": "^1.0.0",
 		"simplebar": "latest"
 	}

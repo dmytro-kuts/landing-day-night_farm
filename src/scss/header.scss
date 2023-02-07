@@ -12,6 +12,9 @@
 		padding-top: rem(20);
 		padding-bottom: rem(20);
 		background-color: rgba(38, 50, 56, 0.9);
+		.light & {
+			background-color: rgba(255, 255, 255, 0.9);
+		}
 	}
 	// .header__container-big
 	&__container-big {
@@ -27,9 +30,24 @@
 		position: relative;
 		z-index: 5;
 		@include adaptiveValue("width", 130, 100, 0, 1620, 768);
-		img {
-			width: 100%;
+		svg{
+			@include adaptiveValue("width", 143, 71.5);
+			@include adaptiveValue("height", 27, 13.5);
 		}
+		.light & {
+			svg {
+				path {
+					fill: #263238;
+					stroke: #263238;
+				}
+			}
+		}
+		transition: transform 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        transform: translate(0px, -2px);
+      }
+    }
 	}
 	// .header__menu
 	&__menu {
@@ -41,6 +59,9 @@
 		gap: rem(16);
 		position: relative;
 		z-index: 5;
+		.light & {
+			color: $mainColor;
+		}
 	}
 	// .header__button
 	&__button {
@@ -70,6 +91,9 @@
 			padding-left: rem(15);
 			padding-right: rem(15);
 			padding-bottom: rem(30);
+			.light & {
+				background-color: $mainColor;
+			}
 			&::before{
 				content:'';
 				position: fixed;
@@ -79,6 +103,9 @@
 				@include adaptiveValue("height", 105, 72,0, 768,320);
 				background-color: #232e34;
 				z-index: 2;
+				.light & {
+					background-color: $mainColor;
+				}
 			}
 		}
 		.menu-open & {
@@ -115,7 +142,7 @@
 		@media (max-width:$mobile){
 			font-size: rem(40);
 		}
-		transition: color 0.3s ease 0s;
+		transition: color 0.4s ease 0s;
 		@media (any-hover: hover){
 			&:hover{
 				color: $greenColor;
@@ -125,10 +152,17 @@
 }
 .theme {
 	padding-bottom: rem(4);
-	// display: flex;
-	// align-items: center;
 	width: rem(16);
 	height: rem(16);
+	transition: all 0.3s ease 0s;
+	&:active {
+		scale: 1.2;
+	}
+	@media (any-hover: hover){
+		&:hover{
+			transform: rotate(-360deg);
+		}
+	}
 }
 //====================================================================================================
 //Burger
@@ -151,6 +185,9 @@
 			width: 100%;
 			height: rem(2);
 			background-color: #fff;
+			.light & {
+				background-color: $greyColor;
+			}
 		}
 		&::before {
 			top: 0;

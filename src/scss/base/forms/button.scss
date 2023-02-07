@@ -11,6 +11,9 @@
 	background-color: $greenColor;
 	border-radius: rem(10);
 	transition: all 0.4s ease 0s;
+	.light & {
+		color: #FFFFFF;
+	}
 	@media (min-width:$tablet){
 		min-width: rem(142);
 	}
@@ -23,6 +26,9 @@
 		background-color: #263238;
 		border: 1px solid #FFFFFF;
 		padding: rem(20) rem(25);
+		.light & {
+			border: 1px solid #263238;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: $greenColor;
@@ -36,6 +42,7 @@
 	}
 	@media (max-width:$tablet){
 		padding: rem(10) rem(16);
+		font-size: rem(14);
 		&_border{
 			padding: rem(9) rem(15);
 		}
