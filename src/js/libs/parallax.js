@@ -27,7 +27,7 @@ Parallax.Each = class {
 		this.animation = this.animationFrame.bind(this);
 		this.offset = 0;
 		this.value = 0;
-		this.smooth = parent.dataset.smooth ? Number(parent.dataset.smooth) : 15;
+		this.smooth = parent.dataset.prlxSmooth ? Number(parent.dataset.prlxSmooth) : 15;
 		this.setEvents();
 	}
 	setEvents() {
@@ -37,30 +37,28 @@ Parallax.Each = class {
 		window.cancelAnimationFrame(this.animationID);
 	}
 	animationFrame() {
-		const topToWindow = this.parent.getBoundingClientRect().top
+		const topToWindow = this.parent.getBoundingClientRect().top;
 		const heightParent = this.parent.offsetHeight;
 		const heightWindow = window.innerHeight;
 		const positionParent = {
 			top: topToWindow - heightWindow,
 			bottom: topToWindow + heightParent,
 		}
-		const centerPoint = this.parent.dataset.center ?
-			this.parent.dataset.center : 'center';
+		const centerPoint = this.parent.dataset.prlxCenter ?
+			this.parent.dataset.prlxCenter : 'center';
 
 		if (positionParent.top < 30 && positionParent.bottom > -30) {
-			// Элемент в начальном положении (0,0), когда родитель находится по отношению к экрану в: 
+			// Елемент у початковому положенні (0,0), коли батько знаходиться по відношенню до екрану: 
 			switch (centerPoint) {
-				// верхней точке (начало родителя соприкачается верхнего края экрана)
+				// верхній точці (початок батька стикається верхнього краю екрану)
 				case 'top':
 					this.offset = -1 * topToWindow;
 					break;
-
-				// центре экрана (середина родителя в середине экрана)
+				// центрі екрана (середина батька у середині екрана)
 				case 'center':
 					this.offset = (heightWindow / 2) - (topToWindow + (heightParent / 2));
 					break;
-
-				// Начало : нижняя часть экрана = верхняя часть родителя
+				// Початок: нижня частина екрана = верхня частина батька
 				case 'bottom':
 					this.offset = heightWindow - (topToWindow + heightParent);
 					break;

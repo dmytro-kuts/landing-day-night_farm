@@ -181,26 +181,26 @@ export let bodyLock = (delay = 500) => {
 export function spollers() {
 	const spollersArray = document.querySelectorAll('[data-spollers]');
 	if (spollersArray.length > 0) {
-		// Получение обычных слойлеров
+		// Отримання звичайних слойлерів
 		const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
 			return !item.dataset.spollers.split(",")[0];
 		});
-		// Инициализация обычных слойлеров
+		// Ініціалізація звичайних слойлерів
 		if (spollersRegular.length) {
 			initSpollers(spollersRegular);
 		}
-		// Получение слойлеров с медиа запросами
+		// Отримання слойлерів з медіа-запитами
 		let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
 		if (mdQueriesArray && mdQueriesArray.length) {
 			mdQueriesArray.forEach(mdQueriesItem => {
-				// Событие
+				// Подія
 				mdQueriesItem.matchMedia.addEventListener("change", function () {
 					initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 				});
 				initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 			});
 		}
-		// Инициализация
+		// Ініціалізація
 		function initSpollers(spollersArray, matchMedia = false) {
 			spollersArray.forEach(spollersBlock => {
 				spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
@@ -215,7 +215,7 @@ export function spollers() {
 				}
 			});
 		}
-		// Работа с контентом
+		// Робота з контентом
 		function initSpollerBody(spollersBlock, hideSpollerBody = true) {
 			let spollerTitles = spollersBlock.querySelectorAll('[data-spoller]');
 			if (spollerTitles.length) {
@@ -258,7 +258,7 @@ export function spollers() {
 				_slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
 			}
 		}
-		// Закрытие при клике вне спойлера
+		// Закриття при кліку поза спойлером
 		const spollersClose = document.querySelectorAll('[data-spoller-close]');
 		if (spollersClose.length) {
 			document.addEventListener("click", function (e) {
