@@ -272,8 +272,8 @@
                 const paralaxMouse = document.querySelectorAll("[data-prlx-mouse]");
                 if (paralaxMouse.length) {
                     this.paralaxMouseInit(paralaxMouse);
-                    this.setLogging(`Проснулся, слежу за объектами: (${paralaxMouse.length})`);
-                } else this.setLogging("Нет ни одного объекта. Сплю...zzZZZzZZz...");
+                    this.setLogging(`Прокинувся, стежу за об'єктами: (${paralaxMouse.length})`);
+                } else this.setLogging("Немає жодного обєкта. Сплю...");
             }
         }
         paralaxMouseInit(paralaxMouse) {
@@ -293,7 +293,7 @@
                     const distY = coordYprocent - positionY;
                     positionX += distX * paramAnimation / 1e3;
                     positionY += distY * paramAnimation / 1e3;
-                    el.style.cssText = `transform: translate3D(${directionX * positionX / (paramСoefficientX / 10)}%,${directionY * positionY / (paramСoefficientY / 10)}%,0);`;
+                    el.style.cssText = `transform: translate3D(${directionX * positionX / (paramСoefficientX / 10)}%,${directionY * positionY / (paramСoefficientY / 10)}%,0) rotate(0.02deg);`;
                     requestAnimationFrame(setMouseParallaxStyle);
                 }
                 function mouseMoveParalax(wrapper = window) {
@@ -565,7 +565,7 @@
             this.animation = this.animationFrame.bind(this);
             this.offset = 0;
             this.value = 0;
-            this.smooth = parent.dataset.smooth ? Number(parent.dataset.smooth) : 15;
+            this.smooth = parent.dataset.prlxSmooth ? Number(parent.dataset.prlxSmooth) : 15;
             this.setEvents();
         }
         setEvents() {
@@ -582,7 +582,7 @@
                 top: topToWindow - heightWindow,
                 bottom: topToWindow + heightParent
             };
-            const centerPoint = this.parent.dataset.center ? this.parent.dataset.center : "center";
+            const centerPoint = this.parent.dataset.prlxCenter ? this.parent.dataset.prlxCenter : "center";
             if (positionParent.top < 30 && positionParent.bottom > -30) switch (centerPoint) {
               case "top":
                 this.offset = -1 * topToWindow;
